@@ -52,7 +52,14 @@ export function nextNumber(ranges, order, previous, random = Math.random) {
     }
     return merged[0].min;
   }
+  // Exclude the previous card in every band, including overlapping custom ranges.
+  const eligible = ranges.filter(({ min, max }) => min !== max || min !== previous);
+  if (!eligible.length) return previous; // A single allowed number has no alternative.
+
   // Pick a selected band first, so millions don't drown out smaller numbers.
-  const { min, max } = ranges[Math.floor(random() * ranges.length)];
-  return min + Math.floor(random() * (max - min + 1));
+  const { min, max } = eligible[Math.floor(random() * eligible.length)];
+  const excludePrevious = Number.isInteger(previous) && previous >= min && previous <= max;
+  const count = max - min + 1 - Number(excludePrevious);
+  const number = min + Math.floor(random() * count);
+  return excludePrevious && number >= previous ? number + 1 : number;
 }

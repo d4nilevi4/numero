@@ -56,3 +56,39 @@ test('empty selections and single-number custom ranges behave in both modes', ()
   }
   assert.equal(nextNumber([RANGES.billions], 'ascending', RANGES.billions.max), RANGES.billions.min);
 });
+
+test('random cards exclude the previous value at both endpoints and inside a range', () => {
+  for (const previous of [0, 4, 8, 9]) {
+    const actual = new Set();
+    for (let index = 0; index < 90; index++) {
+      const values = [0, index / 90];
+      actual.add(nextNumber([RANGES.units], 'random', previous, () => values.shift()));
+    }
+    assert.deepEqual(actual, new Set(Array.from({ length: 10 }, (_, index) => index).filter(number => number !== previous)));
+  }
+  assert.equal(nextNumber([{ min: 999_999_999_998, max: 999_999_999_999 }], 'random', 999_999_999_998, () => 0), 999_999_999_999);
+});
+
+test('overlapping bands and singleton custom ranges cannot reintroduce the previous card', () => {
+  const ranges = [RANGES.units, { min: 5, max: 12 }, { min: 8, max: 8 }, { min: 2, max: 2 }];
+  for (const bandDraw of [0, 0.4, 0.999999]) {
+    for (const numberDraw of [0, 0.5, 0.999999]) {
+      const values = [bandDraw, numberDraw];
+      const number = nextNumber(ranges, 'random', 8, () => values.shift());
+      assert.notEqual(number, 8);
+      assert.ok(number >= 0 && number <= 12);
+    }
+  }
+  assert.equal(nextNumber([{ min: 8, max: 8 }, { min: 9, max: 9 }], 'random', 8, () => 0), 9);
+  assert.equal(nextNumber([{ min: 8, max: 8 }, { min: 8, max: 8 }], 'random', 8, () => 0), 8);
+});
+
+test('two-number practice keeps alternating without retry loops, even with a constant random source', () => {
+  const ranges = [{ min: 7, max: 8 }];
+  let previous = 7;
+  for (let index = 0; index < 100; index++) {
+    const number = nextNumber(ranges, 'random', previous, () => 0);
+    assert.equal(number, previous === 7 ? 8 : 7);
+    previous = number;
+  }
+});
