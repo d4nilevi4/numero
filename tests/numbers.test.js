@@ -36,7 +36,7 @@ test('all numbers below a million and a large-number sample have complete readin
     assert.match(spanish, /^[a-záéíóúñ]+(?: [a-záéíóúñ]+)*$/u);
     assert.doesNotMatch(spanish, /(?:undefined|uno mil|ciento mil| y mil|mil cero)/u);
     assert.match(toReading(number), /^[а-яё\u0301]+(?: [а-яё\u0301]+)*$/u);
-    assert.match(toIPA(number), /^\/[a-zɾʃʝˈ]+(?: [a-zɾʃʝˈ]+)*\/$/u);
+    assert.match(toIPA(number), /^\/[a-zɾʃˈ]+(?: [a-zɾʃˈ]+)*\/$/u);
   }
   for (let number = 0; number < 1_000_000; number++) check(number);
   for (const number of examples.keys()) check(number);
@@ -62,8 +62,8 @@ test('formatting and reading retain stress marks and thousands grouping', () => 
   assert.equal(formatNumber(MAX_NUMBER), '999\u202f999\u202f999\u202f999');
   assert.equal(toReading(21_001), 'бэйнтиу́н мил у́но');
   assert.equal(toReading(347), 'тресье́нтос куаре́нта и сье́те');
-  assert.equal(toIPA(21_000_001), '/bejnˈtjun miˈʝones ˈuno/');
-  assert.equal(toIPA(1_000_000_000), '/mil miˈʝones/');
+  assert.equal(toIPA(21_000_001), '/bejnˈtjun miˈʃones ˈuno/');
+  assert.equal(toIPA(1_000_000_000), '/mil miˈʃones/');
 });
 
 test('IPA preserves diphthongs, lexical stress and apocope in composite numbers', () => {
@@ -73,8 +73,18 @@ test('IPA preserves diphthongs, lexical stress and apocope in composite numbers'
     [31, '/ˈtɾejnta i ˈuno/'], [101, '/ˈsjento ˈuno/'],
     [500, '/kiˈnjentos/'], [700, '/seteˈsjentos/'],
     [900, '/nobeˈsjentos/'], [31_000, '/ˈtɾejnta i un mil/'],
-    [21_000_000, '/bejnˈtjun miˈʝones/'],
-    [1_001_000_001, '/mil un miˈʝones ˈuno/'],
+    [21_000_000, '/bejnˈtjun miˈʃones/'],
+    [1_001_000_001, '/mil un miˈʃones ˈuno/'],
   ]);
   for (const [number, expected] of examples) assert.equal(toIPA(number), expected, String(number));
+});
+
+test('Uruguayan sheísmo changes ll in millón/millones, while vowel glides and y remain intact', () => {
+  assert.equal(toSpanish(1_000_000), 'un millón');
+  assert.equal(toIPA(1_000_000), '/un miˈʃon/');
+  assert.equal(toReading(1_000_000), 'ун мишо́н');
+  assert.equal(toIPA(2_000_000), '/dos miˈʃones/');
+  assert.equal(toReading(2_000_000), 'дос мишо́нес');
+  assert.equal(toIPA(31), '/ˈtɾejnta i ˈuno/');
+  assert.equal(toIPA(109), '/ˈsjento ˈnwebe/');
 });

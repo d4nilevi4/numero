@@ -26,11 +26,11 @@ npm run dev
 
 Сохраняются только настройки в браузере. Озвучки, микрофона, самооценки, счётчиков и истории нет.
 
-IPA — широкая запись по словам для латиноамериканского произношения с seseo и yeísmo. Она не передаёт все позиционные изменения звуков в слитной речи. Русская запись — приблизительная подсказка с ударениями.
+IPA — широкая учебная запись по словам для уругвайского произношения с seseo и sheísmo: `millón` → /miˈʃon/, `millones` → /miˈʃones/. Русская подсказка: «мишо́н», «мишо́нес». В Уругвае встречается также звонкий вариант [ʒ], близкий к «ж»; для тренировки здесь выбран вариант [ʃ], близкий к «ш». Вокальные /j/ в дифтонгах и союз `y` /i/ от этого не меняются. Запись не передаёт все позиционные изменения звуков в слитной речи; русская подсказка приблизительна.
 
 Написание сверено с [таблицей и правилами числительных RAE](https://www.rae.es/dpd/cardinales), включая `cien`/`ciento`, `veintiún mil`, `un millón` и `mil millones`. Испанское `mil millones` означает миллиард; `billón` — миллион миллионов, за пределами поддерживаемого диапазона ([FundéuRAE](https://www.fundeu.es/consulta/mil-millones-millardos/)).
 
-Система IPA и оговорки о дифтонгах, ударении, аллофонах и диалектных различиях: Martínez-Celdrán, Fernández-Planas & Carrera-Sabaté, [Illustrations of the IPA: Castilian Spanish](https://doi.org/10.1017/S0025100303001373), Journal of the International Phonetic Association (2003). В тренажёре используется seseo и yeísmo: c/z передаются как /s/, а ll — как /ʝ/. Это широкая фонемная запись по словам, а не узкая транскрипция конкретного диктора.
+Источники о произношении: [Instituto Cervantes — Montevideo](https://cvc.cervantes.es/LENGUA/voces_hispanicas/uruguay/montevideo.htm) и Michnowicz & Planchón, [Sheísmo in Montevideo Spanish](https://doi.org/10.1075/ihll.29.07mic), 2020. Общие принципы IPA, дифтонгов и ударения: Martínez-Celdrán, Fernández-Planas & Carrera-Sabaté, [Illustrations of the IPA: Castilian Spanish](https://doi.org/10.1017/S0025100303001373), 2003.
 
 ## Проверка и сборка
 

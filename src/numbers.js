@@ -10,7 +10,7 @@ const SMALL = [
 const TENS = ['', '', '', 'treinta', 'cuarenta', 'cincuenta', 'sesenta', 'setenta', 'ochenta', 'noventa'];
 const HUNDREDS = ['', 'ciento', 'doscientos', 'trescientos', 'cuatrocientos', 'quinientos', 'seiscientos', 'setecientos', 'ochocientos', 'novecientos'];
 
-// A reading aid, not IPA. Latin American seseo; acute marks indicate stress.
+// A reading aid, not IPA. Uruguayan seseo and sheísmo; acute marks indicate stress.
 const READING = {
   cero: 'се́ро', uno: 'у́но', un: 'ун', dos: 'дос', tres: 'трес',
   cuatro: 'куа́тро', cinco: 'си́нко', seis: 'сэйс', siete: 'сье́те',
@@ -28,10 +28,11 @@ const READING = {
   trescientos: 'тресье́нтос', cuatrocientos: 'куатросье́нтос',
   quinientos: 'кинье́нтос', seiscientos: 'сэйсье́нтос',
   setecientos: 'сетесье́нтос', ochocientos: 'очосье́нтос',
-  novecientos: 'нобэсье́нтос', mil: 'мил', millón: 'мийо́н', millones: 'мийо́нес', y: 'и',
+  novecientos: 'нобэсье́нтос', mil: 'мил', millón: 'мишо́н', millones: 'мишо́нес', y: 'и',
 };
 
-// Broad, word-by-word IPA with Latin American seseo and yeísmo.
+// Broad, word-by-word IPA with Uruguayan seseo and sheísmo (ll -> /ʃ/).
+// Vowel glides /j/ and the conjunction y /i/ are unaffected by sheísmo.
 // Phonemic /b d/ stay distinct from the context-dependent [β ð] allophones.
 const IPA = {
   cero: 'ˈseɾo', uno: 'ˈuno', un: 'un', dos: 'dos', tres: 'tɾes',
@@ -50,7 +51,7 @@ const IPA = {
   trescientos: 'tɾesˈsjentos', cuatrocientos: 'kwatɾoˈsjentos',
   quinientos: 'kiˈnjentos', seiscientos: 'sejsˈsjentos',
   setecientos: 'seteˈsjentos', ochocientos: 'otʃoˈsjentos',
-  novecientos: 'nobeˈsjentos', mil: 'mil', millón: 'miˈʝon', millones: 'miˈʝones', y: 'i',
+  novecientos: 'nobeˈsjentos', mil: 'mil', millón: 'miˈʃon', millones: 'miˈʃones', y: 'i',
 };
 
 export function isValidNumber(value) {
