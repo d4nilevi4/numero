@@ -1,0 +1,139 @@
+@charset "UTF-8";
+
+:root {
+  font-family: "Courier New", Courier, monospace;
+  color: #252420;
+  background: #faf9f6;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, input, select { font: inherit; color: inherit; }
+button, select, input[type="checkbox"] { cursor: pointer; }
+button, input, select { touch-action: manipulation; }
+[hidden] { display: none !important; }
+
+button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid #252420;
+  outline-offset: 4px;
+}
+
+.page {
+  width: min(680px, calc(100% - 48px));
+  margin: 56px auto;
+}
+
+h1 {
+  font: 400 40px/1.2 Georgia, "Times New Roman", serif;
+  letter-spacing: -1.6px;
+  margin: 0;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #bcbab2;
+}
+
+.practice { margin-top: 30px; }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 335px;
+  padding: 42px 30px 24px;
+  border: 1px solid #bcbab2;
+  border-radius: 0;
+  background: transparent;
+  text-align: center;
+}
+
+.number {
+  display: block;
+  font: 400 112px/1.1 "Times New Roman", Times, serif;
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: -4px;
+  white-space: nowrap;
+}
+
+.number.medium { font-size: 88px; letter-spacing: -3px; }
+.number.large { font-size: 65px; letter-spacing: -2px; }
+.number.huge { font-size: 53px; letter-spacing: -1px; }
+
+.answer-space {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 128px;
+  width: 100%;
+  padding-top: 23px;
+}
+
+.answer { display: block; width: 100%; }
+.spanish, .ipa, .russian { display: block; overflow-wrap: anywhere; text-wrap: balance; }
+.spanish { font: 400 26px/1.4 Georgia, "Times New Roman", serif; }
+.ipa { font: 400 15px/1.7 Arial, sans-serif; color: #67645c; margin-top: 9px; }
+.russian { font-size: 12px; line-height: 1.8; color: #67645c; margin-top: 7px; }
+.card.long-answer .spanish { font-size: 22px; }
+.card.long-answer .ipa { font-size: 14px; }
+.card.very-long-answer .spanish { font-size: 19px; }
+.card.very-long-answer .ipa { font-size: 13px; }
+.card.very-long-answer .russian { font-size: 11px; }
+
+.actions { display: flex; justify-content: center; gap: 12px; margin-top: 18px; }
+.actions button, .custom-range button {
+  border: 1px solid #aaa79e;
+  border-radius: 0;
+  padding: 9px 17px;
+  background: #eeede7;
+  box-shadow: inset 1px 1px #fff;
+  font-size: 13px;
+  min-height: 36px;
+}
+.actions button { min-width: 200px; }
+.actions button:hover, .custom-range button:hover { background: #e4e2da; }
+.actions button:active, .custom-range button:active { box-shadow: inset 1px 1px #bcbab2; }
+button:disabled { opacity: .4; cursor: default; }
+
+.settings { margin-top: 38px; border-top: 1px solid #bcbab2; padding-top: 21px; }
+h2 { margin: 0 0 17px; font-size: 13px; line-height: 1.5; font-weight: 400; }
+.ranges { display: flex; flex-wrap: wrap; gap: 13px 22px; border: 0; padding: 0; margin: 0; }
+.ranges label, .russian-option { display: flex; align-items: center; gap: 6px; font-size: 12px; line-height: 1.5; cursor: pointer; }
+input[type="checkbox"] { width: 13px; height: 13px; margin: 0; accent-color: #36342e; flex-shrink: 0; }
+.preferences { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 18px; margin-top: 25px; }
+.order-label { display: flex; align-items: center; gap: 9px; font-size: 12px; }
+select { font-size: 12px; background: #faf9f6; border: 1px solid #aaa79e; border-radius: 0; padding: 5px 6px; min-height: 29px; }
+.custom-range { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; margin-top: 19px; }
+.custom-range label { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+.custom-range input { width: 153px; min-width: 0; font-size: 12px; border: 1px solid #aaa79e; background: #fff; border-radius: 0; padding: 7px 6px; }
+.custom-range button { padding: 6px 13px; min-height: 30px; font-size: 12px; }
+.error { font-size: 11px; line-height: 1.7; margin: 17px 0 0; color: #883d2d; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+noscript p { font-size: 12px; }
+
+@media (max-width: 600px) {
+  .page { width: calc(100% - 36px); margin: 28px auto; }
+  h1 { font-size: 34px; padding-bottom: 17px; }
+  .practice { margin-top: 23px; }
+  .card { padding: 30px 17px 20px; min-height: 295px; }
+  .number { font-size: 98px; }
+  .number.medium { font-size: clamp(52px, 13.5vw, 80px); letter-spacing: -2px; }
+  .number.large { font-size: clamp(36px, 9.7vw, 55px); letter-spacing: -1px; }
+  .number.huge { font-size: clamp(28px, 7.6vw, 42px); letter-spacing: -1px; }
+  .spanish { font-size: 23px; }
+  .ipa { font-size: 14px; }
+  .card.long-answer .spanish { font-size: 20px; }
+  .card.long-answer .ipa { font-size: 13px; }
+  .card.very-long-answer .spanish { font-size: 18px; }
+  .card.very-long-answer .ipa { font-size: 12px; }
+  .answer-space { min-height: 130px; padding-top: 20px; }
+  .actions { gap: 10px; margin-top: 15px; }
+  .actions button { min-width: 190px; font-size: 12px; padding: 10px; }
+  .settings { margin-top: 29px; padding-top: 18px; }
+  .ranges { gap: 14px 19px; }
+  .preferences { align-items: start; gap: 18px; margin-top: 22px; }
+  .russian-option { min-height: 29px; }
+  .custom-range { gap: 8px; }
+  .custom-range label { flex: 1; min-width: 0; }
+  .custom-range input { width: 100%; }
+}

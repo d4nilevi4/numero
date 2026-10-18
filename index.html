@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#faf9f6" />
+    <meta name="description" content="Número. Карточки с испанскими числами." />
+    <title>Número</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./src/app.js"></script>
+  </head>
+  <body>
+    <main class="page">
+      <h1>Número</h1>
+
+      <section class="practice" aria-label="Карточка с числом">
+        <button class="card" id="card" aria-expanded="false" aria-controls="answer" aria-label="Показать ответ" aria-keyshortcuts="Space">
+          <span class="number" id="number">—</span>
+          <span class="answer-space">
+            <span class="answer" id="answer" hidden>
+              <span class="spanish" id="spanish" lang="es"></span>
+              <span class="ipa" id="ipa" title="Фонемная транскрипция IPA · Латинская Америка"></span>
+              <span class="russian" id="russian" title="Приблизительная русская подсказка" hidden></span>
+            </span>
+          </span>
+        </button>
+        <div class="actions">
+          <button id="advance" aria-controls="answer" aria-expanded="false">Показать ответ</button>
+        </div>
+      </section>
+
+      <section class="settings" aria-labelledby="settings-title">
+        <h2 id="settings-title">Что повторим?</h2>
+        <fieldset class="ranges">
+          <legend class="sr-only">Диапазоны — можно выбрать несколько</legend>
+          <label><input type="checkbox" name="range" value="units" checked /> 0–9</label>
+          <label><input type="checkbox" name="range" value="tens" checked /> 10–99</label>
+          <label><input type="checkbox" name="range" value="hundreds" checked /> 100–999</label>
+          <label title="1 000 – 999 999"><input type="checkbox" name="range" value="thousands" /> Тысячи</label>
+          <label title="1 000 000 – 9 999 999"><input type="checkbox" name="range" value="millions" /> Миллионы</label>
+          <label title="10 000 000 – 99 999 999"><input type="checkbox" name="range" value="tenMillions" /> Десятки млн</label>
+          <label title="100 000 000 – 999 999 999"><input type="checkbox" name="range" value="hundredMillions" /> Сотни млн</label>
+          <label title="1 000 000 000 – 999 999 999 999"><input type="checkbox" name="range" value="billions" /> Миллиарды</label>
+          <label><input type="checkbox" name="range" value="custom" /> Свой</label>
+        </fieldset>
+
+        <form class="custom-range" id="custom-form" hidden>
+          <label>От <input id="custom-min" type="number" min="0" max="999999999999" step="1" value="0" required /></label>
+          <label>до <input id="custom-max" type="number" min="0" max="999999999999" step="1" value="1000" required /></label>
+          <button type="submit">OK</button>
+        </form>
+        <p class="error" id="range-error" role="status" hidden></p>
+
+        <div class="preferences">
+          <label class="order-label" for="order">Порядок:
+            <select id="order"><option value="random">Случайный</option><option value="ascending">По возрастанию</option></select>
+          </label>
+          <label class="russian-option"><input type="checkbox" id="show-russian" /> Подсказка по-русски</label>
+        </div>
+      </section>
+      <noscript><p>Для карточек нужен JavaScript.</p></noscript>
+    </main>
+  </body>
+</html>
