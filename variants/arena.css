@@ -1,0 +1,25 @@
+/* Are.na: plain text, left aligned, one navy action. */
+:root{--bg:#fff;--ink:#111;--muted:#767676;--line:#e6e6e6;--surface:#f3f3f3;--accent:#00004d;--on-accent:#fff;--error:#b00020;color-scheme:light;font-family:-apple-system,"Helvetica Neue",Arial,sans-serif}
+h1,h2,.spanish,.ipa{font-family:inherit}
+h1{font-size:16px;font-weight:600;letter-spacing:0}
+h2{font-size:18px;font-weight:600}
+.top{border:0}
+.card{border:0;align-items:flex-start;text-align:left;padding:8px 0}
+.number{font-family:inherit;font-weight:500;letter-spacing:-.04em;font-size:min(24vw,130px)}
+.number.medium{font-size:clamp(48px,17vw,88px)}
+.number.large{font-size:clamp(36px,13vw,65px)}
+.number.huge{font-size:clamp(28px,10vw,53px)}
+.spanish{font-size:22px;font-weight:400}
+.card.long-answer .spanish{font-size:19px}
+.card.very-long-answer .spanish{font-size:17px}
+.answer-space{justify-content:flex-start}
+button{border:0;border-radius:2px;font-weight:600;font-size:14px}
+.primary{min-height:48px;font-size:14px}
+.credit{text-align:left;color:var(--muted)}
+.credit a{color:var(--muted)}
+.chips{gap:0 20px}
+.chip span{border:0;background:none;padding:0;min-height:40px}
+.chip span::before{content:"☐";margin-right:8px}
+.chip input:checked + span{background:none;font-weight:600}
+.chip input:checked + span::before{content:"☑";color:inherit}
+.sheet{border-radius:0;border-color:var(--line)}

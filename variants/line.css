@@ -1,0 +1,25 @@
+/* Plain utility: black on white, 1px lines, system font, no colour. */
+:root{--bg:#fff;--ink:#000;--muted:#444;--line:#000;--surface:#fff;--accent:#000;--on-accent:#fff;--error:#000;color-scheme:light;font-family:Arial,Helvetica,sans-serif}
+h1,h2,.number,.spanish,.ipa{font-family:inherit}
+h1{font-size:18px;font-weight:700;letter-spacing:0}
+h2{font-size:16px;font-weight:700}
+.card{border-width:1px}
+.number{font-weight:400;letter-spacing:-.03em;font-size:min(22vw,120px)}
+.number.medium{font-size:clamp(48px,16vw,88px)}
+.number.large{font-size:clamp(34px,12vw,65px)}
+.number.huge{font-size:clamp(26px,9.5vw,53px)}
+.spanish{font-size:21px}
+.card.long-answer .spanish{font-size:18px}
+.card.very-long-answer .spanish{font-size:16px}
+button{border-color:#000;background:#fff;color:#000}
+.primary{background:#fff;color:#000;border:1px solid #000;font-size:16px}
+.primary:hover:not(:disabled),.ghost:hover{background:#000;color:#fff;filter:none}
+#open-settings{border:0;text-decoration:underline;text-underline-offset:3px}
+.chips{gap:0 20px}
+.chip span{border:0;padding:0;min-height:40px}
+.chip span::before{content:"☐";margin-right:8px;color:inherit}
+.chip input:checked + span{background:none;font-weight:700}
+.chip input:checked + span::before{content:"☒";color:inherit}
+.sheet{border-width:1px 0 0}
+@media (min-width:601px){.sheet{border-width:1px}}
+.custom-range input{background:#fff}

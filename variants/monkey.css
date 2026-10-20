@@ -1,0 +1,26 @@
+/* Monkeytype: dark, monospace, quiet text buttons. */
+:root{--bg:#323437;--ink:#d1d0c5;--muted:#646669;--line:#2c2e31;--surface:#2c2e31;--accent:#e2b714;--on-accent:#323437;--error:#ca4754;color-scheme:dark;font-family:"Roboto Mono","JetBrains Mono",ui-monospace,Menlo,monospace}
+h1,h2,.number,.spanish{font-family:inherit}
+h1{font-size:20px;font-weight:400;letter-spacing:0;text-transform:lowercase}
+h2{font-size:16px}
+.top{border:0}
+.card{border:0}
+.number{font-weight:400;letter-spacing:-.04em;font-size:min(22vw,120px)}
+.number.medium{font-size:clamp(48px,16vw,88px)}
+.number.large{font-size:clamp(34px,12vw,65px)}
+.number.huge{font-size:clamp(26px,9vw,53px)}
+.spanish{font-size:20px;color:var(--ink)}
+.card.long-answer .spanish{font-size:17px}
+.card.very-long-answer .spanish{font-size:15px}
+button{border:0;border-radius:8px;color:var(--muted);text-transform:lowercase}
+button:hover{color:var(--ink)}
+.primary{background:var(--surface);color:var(--muted);min-height:52px;font-size:15px}
+.primary:hover:not(:disabled){filter:none;color:var(--ink)}
+.ghost{background:transparent}
+.credit,.credit a{color:var(--muted)}
+.chip span{border:0;border-radius:6px;background:var(--surface);color:var(--muted)}
+.chip span::before{content:none!important}
+.chip input:checked + span{background:var(--surface);color:var(--accent)}
+.sheet{border:0;border-radius:12px 12px 0 0}
+kbd{border-color:var(--muted)}
+.card{color:var(--ink)}
