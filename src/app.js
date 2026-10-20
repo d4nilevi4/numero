@@ -47,10 +47,12 @@ function showNext({ reset = false } = {}) {
   if (empty) {
     $('number').textContent = '—';
     $('card').setAttribute('aria-label', 'Выберите диапазон');
+    $('empty-hint').hidden = false;
     showError('Выберите хотя бы один диапазон.');
     return;
   }
 
+  $('empty-hint').hidden = true;
   showError();
   $('number').textContent = formatNumber(current);
   $('number').className = `number${current >= 1_000_000_000 ? ' huge' : current >= 10_000_000 ? ' large' : current >= 10_000 ? ' medium' : ''}`;
@@ -76,12 +78,19 @@ document.querySelectorAll('input[name="range"]').forEach((input) => {
   });
 });
 
-$('order').value = settings.order;
-$('order').addEventListener('change', (event) => {
-  settings.order = event.target.value;
-  save();
-  showNext({ reset: true });
+document.querySelectorAll('input[name="order"]').forEach((input) => {
+  input.checked = input.value === settings.order;
+  input.addEventListener('change', () => {
+    settings.order = input.value;
+    save();
+    showNext({ reset: true });
+  });
 });
+
+const sheet = $('settings');
+$('open-settings').addEventListener('click', () => sheet.showModal());
+$('close-settings').addEventListener('click', () => sheet.close());
+sheet.addEventListener('click', (event) => { if (event.target === sheet) sheet.close(); });
 
 $('show-russian').checked = settings.showRussian;
 $('russian').hidden = !settings.showRussian;
@@ -109,7 +118,7 @@ $('custom-form').addEventListener('submit', (event) => {
 });
 
 document.addEventListener('keydown', (event) => {
-  if (event.repeat || event.altKey || event.ctrlKey || event.metaKey) return;
+  if (sheet.open || event.repeat || event.altKey || event.ctrlKey || event.metaKey) return;
   const target = event.target;
   if (target instanceof HTMLElement && (target.matches('input, select, textarea') || target.isContentEditable)) return;
   if (event.code === 'Space') {
