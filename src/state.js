@@ -19,6 +19,7 @@ export function sanitizeSettings(raw) {
       : ['units', 'tens', 'hundreds'],
     order: raw?.order === 'ascending' ? 'ascending' : 'random',
     showRussian: raw?.showRussian === true,
+    theme: raw?.theme === 'light' || raw?.theme === 'dark' ? raw.theme : 'auto',
     customMin: isValidRange(raw?.customMin, raw?.customMax) ? raw.customMin : 0,
     customMax: isValidRange(raw?.customMin, raw?.customMax) ? raw.customMax : 1000,
   };

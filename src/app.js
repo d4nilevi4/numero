@@ -87,6 +87,20 @@ document.querySelectorAll('input[name="order"]').forEach((input) => {
   });
 });
 
+function applyTheme() {
+  if (settings.theme === 'auto') delete document.documentElement.dataset.theme;
+  else document.documentElement.dataset.theme = settings.theme;
+}
+applyTheme();
+document.querySelectorAll('input[name="theme"]').forEach((input) => {
+  input.checked = input.value === settings.theme;
+  input.addEventListener('change', () => {
+    settings.theme = input.value;
+    applyTheme();
+    save();
+  });
+});
+
 const sheet = $('settings');
 $('open-settings').addEventListener('click', () => sheet.showModal());
 $('close-settings').addEventListener('click', () => sheet.close());

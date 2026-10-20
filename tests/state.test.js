@@ -13,6 +13,9 @@ test('settings recover defaults, reject unknown ranges and retain a valid mix', 
   assert.deepEqual(settings.selected, ['units', 'millions', 'custom']);
   assert.equal(settings.order, 'ascending');
   assert.equal(settings.showRussian, true);
+  assert.equal(settings.theme, 'auto');
+  assert.equal(sanitizeSettings({ theme: 'dark' }).theme, 'dark');
+  assert.equal(sanitizeSettings({ theme: 'neon' }).theme, 'auto');
   assert.deepEqual(getRanges(settings), [RANGES.units, RANGES.millions, { min: 21_000_000, max: 31_000_000 }]);
   assert.equal(sanitizeSettings({ customMin: 10, customMax: 1 }).customMin, 0);
   assert.deepEqual(sanitizeSettings({ selected: [] }).selected, []);
